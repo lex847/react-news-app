@@ -7,7 +7,7 @@ const NEWSAPI_KEY 		= process.env.REACT_APP_NEWSAPI_KEY
 
 export function getNews() {
 	return function(dispatch) {
-		axios.get(`${NEWSAPI_BASEURL}?country=${NEWSAPI_COUNTRY}&apiKey=${NEWSAPI_KEY}`).then((response) => {
+		axios.get(`${NEWSAPI_BASEURL}top-headlines?country=${NEWSAPI_COUNTRY}&apiKey=${NEWSAPI_KEY}`).then((response) => {
 			dispatch({
 				type: GET_NEWS,
 				payload: response.data
