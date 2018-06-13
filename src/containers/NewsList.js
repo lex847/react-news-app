@@ -27,7 +27,7 @@ class NewsList extends Component {
       		<div>
         		<h4>News List</h4>
         		<hr/>
-        		<div className="row">
+        		<div className="row col s12">
         			{this.renderNews()}
         		</div>
       		</div>
