@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getNews } from '../actions/news'
+import NewsListItem from '../components/NewsListItem'
 
 class NewsList extends Component {
   	
@@ -9,11 +10,26 @@ class NewsList extends Component {
 		this.props.getNews()
 	}
 
+	renderNews() {
+		const {news} = this.props
+
+		if (news.articles) {
+			return news.articles.map((article, index) => {
+				return <NewsListItem key={index} article={article}/>
+			})
+		} else {
+			return <div>Loading news</div>
+		}
+	}
+
   	render() {
-  		console.log(this.props.news)
     	return (
       		<div>
-        		<h4>News List</h4>	
+        		<h4>News List</h4>
+        		<hr/>
+        		<div className="row">
+        			{this.renderNews()}
+        		</div>
       		</div>
 		)
   	}
