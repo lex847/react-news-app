@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPublishers } from '../actions/publishers'
+import CountriesList from './CountriesList'
 
 class PublishersList extends Component {
 
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			selectedCountry: 'us' 
+		}
+	}
+
 	componentWillMount() {
-		this.props.getPublishers()
+		this.props.getPublishers(this.state.selectedCountry)
 	}
 
 	renderPublishersSelect() {
@@ -23,13 +32,25 @@ class PublishersList extends Component {
 		this.props.getSelectedPublisherCallback(e.target.value)
 	}
 
+	getSelectedCountryCallback(country) {
+		this.setState({
+			selectedCountry: country
+		}, function() {
+			this.props.getPublishers(this.state.selectedCountry)
+		})
+	}
+
 	render() {
 		return (
-			<div className="col s12">
-				<label>Select publisher</label>
-				<select className="browser-default" onChange={(e) => this.getSelectedPublisher(e)}>
-					{this.renderPublishersSelect()}
-				</select>
+			<div>
+				<CountriesList getSelectedCountryCallback={this.getSelectedCountryCallback.bind(this)}/>
+				<div className="col s12">
+					<label>Select publisher</label>
+					<select className="browser-default" onChange={(e) => this.getSelectedPublisher(e)}>
+						<option value="default">Choose your publisher</option>
+						{this.renderPublishersSelect()}
+					</select>
+				</div>
 			</div>
 		)
 	}

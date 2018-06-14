@@ -11,12 +11,12 @@ class NewsList extends Component {
 		super(props)
 
 		this.state = {
-			publisher: 'abc-news'
+			selectedPublisher: 'abc-news'
 		}
 	}
 
 	componentWillMount() {
-		this.props.getNews(this.state.publisher)
+		this.props.getNews(this.state.selectedPublisher)
 	}
 
 	renderNews() {
@@ -33,9 +33,9 @@ class NewsList extends Component {
 
 	getSelectedPublisherCallback(publisher) {
 		this.setState({
-			publisher: publisher
+			selectedPublisher: publisher
 		}, function() {
-			this.props.getNews(this.state.publisher)
+			this.props.getNews(this.state.selectedPublisher)
 		})
 	}
 
