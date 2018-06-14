@@ -11,7 +11,7 @@ class App extends Component {
     		<div>
     			<Navbar/>
     			<PublishersList/>
-      			<NewsList/>
+      		<NewsList/>
       		</div>
 		)
   	}

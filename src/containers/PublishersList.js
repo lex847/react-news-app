@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPublishers } from '../actions/publishers'
-import PublishersListItem from '../components/PublishersListItem'
 
 class PublishersList extends Component {
 
@@ -16,18 +15,18 @@ class PublishersList extends Component {
 		if (publishers.sources) {
 			// console.log(publishers.sources)
 			return publishers.sources.map((publisher, index) => {
-				return <PublishersListItem key={index} publisher={publisher}/>
+				return <option key={index} value={publisher.id}>{publisher.name}</option>
 			})
-		} else {
-			return <div>Loading publishers</div>
 		}
 	}
 
 	render() {
 		return (
-			<div className="input-field col s12">
-				{this.renderPublishersSelect()}
+			<div className="col s12">
 				<label>Select publisher</label>
+				<select className="browser-default">
+					{this.renderPublishersSelect()}
+				</select>
 			</div>
 		)
 	}
