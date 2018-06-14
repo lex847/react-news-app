@@ -7,8 +7,16 @@ import PublishersList from './PublishersList'
 
 class NewsList extends Component {
   	
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			publisher: 'abc-news'
+		}
+	}
+
 	componentWillMount() {
-		this.props.getNews()
+		this.props.getNews(this.state.publisher)
 	}
 
 	renderNews() {
@@ -24,13 +32,17 @@ class NewsList extends Component {
 	}
 
 	getSelectedPublisherCallback(publisher) {
-		console.log(publisher)
+		this.setState({
+			publisher: publisher
+		}, function() {
+			this.props.getNews(this.state.publisher)
+		})
 	}
 
   	render() {
     	return (
       		<div>
-      			<PublishersList getSelectedPublisherCallback={this.getSelectedPublisherCallback}/>
+      			<PublishersList getSelectedPublisherCallback={this.getSelectedPublisherCallback.bind(this)}/>
         		<h4>News List</h4>
         		<hr/>
         		<div className="row col s12">
