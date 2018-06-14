@@ -13,18 +13,21 @@ class PublishersList extends Component {
 		const {publishers} = this.props
 		
 		if (publishers.sources) {
-			// console.log(publishers.sources)
 			return publishers.sources.map((publisher, index) => {
 				return <option key={index} value={publisher.id}>{publisher.name}</option>
 			})
 		}
 	}
 
+	getSelectedPublisher(e) {
+		this.props.getSelectedPublisherCallback(e.target.value)
+	}
+
 	render() {
 		return (
 			<div className="col s12">
 				<label>Select publisher</label>
-				<select className="browser-default">
+				<select className="browser-default" onChange={(e) => this.getSelectedPublisher(e)}>
 					{this.renderPublishersSelect()}
 				</select>
 			</div>

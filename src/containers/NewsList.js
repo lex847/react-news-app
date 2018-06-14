@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getNews } from '../actions/news'
 import NewsListItem from '../components/NewsListItem'
+import PublishersList from './PublishersList'
 
 class NewsList extends Component {
   	
@@ -22,9 +23,14 @@ class NewsList extends Component {
 		}
 	}
 
+	getSelectedPublisherCallback(publisher) {
+		console.log(publisher)
+	}
+
   	render() {
     	return (
       		<div>
+      			<PublishersList getSelectedPublisherCallback={this.getSelectedPublisherCallback}/>
         		<h4>News List</h4>
         		<hr/>
         		<div className="row col s12">

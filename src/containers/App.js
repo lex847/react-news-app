@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import NewsList from './NewsList'
 import Navbar from '../components/Navbar'
-import PublishersList from './PublishersList'
 
 class App extends Component {
   	
@@ -10,8 +9,7 @@ class App extends Component {
     	return (
     		<div>
     			<Navbar/>
-    			<PublishersList/>
-      		<NewsList/>
+      		    <NewsList/>
       		</div>
 		)
   	}
