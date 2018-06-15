@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPublishers } from '../actions/publishers'
-import CountriesList from './CountriesList'
+import CountriesList from '../components/CountriesList'
 
 class PublishersList extends Component {
 
