@@ -13,7 +13,7 @@ const NewsListItem = (props) => {
 						<p>{article.description}</p>
 						<div className="space-between">
 							<p>{renderAuthor(article.author)}</p>
-							<p>{article.publishedAt}</p>
+							<p>{formatDate(article.publishedAt)}</p>
 						</div>
 					</div>
 				</div>
@@ -32,6 +32,20 @@ const NewsListItem = (props) => {
 		}
 
 		return
+	}
+
+	function formatDate(date) {
+
+		const monthNames = ["January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+		]
+		const d = new Date(date)
+
+		const year 		= d.getFullYear()
+		const monthName = monthNames[d.getMonth()]	
+		const day  		= d.getDate()
+
+		return "Published on " + monthName + " " + day + ", " + year
 	}
 }
 
