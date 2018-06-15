@@ -1,8 +1,8 @@
 /* FLEX */
 
-.space-between {
+.flex-column {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 }
 
 /* NAVBAR */
@@ -15,4 +15,22 @@
 @keyframes app-logo-spin {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
+}
+
+/* NEWS LIST ITEM */
+
+#news-card {
+	height: 200px;
+	margin-left: 0.1px;
+	margin-right: 0.1px;
+}
+
+#publication-paragraph {
+	position: absolute;
+	bottom: 0; 
+}
+
+#article-img {
+	padding-top: 5%;
+	padding-bottom: 5%;
 }

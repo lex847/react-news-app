@@ -5,34 +5,22 @@ const NewsListItem = (props) => {
 	const {article} = props
 	
 	return (
-		<div className="col s6 card">
-			<div className="row col s12">
-				<div className="col s8">
-					<div className="card-content">
+		<div className="col s6">
+			<div className="row card" id="news-card">
+				<div className="col s8 card-content">
+					<div className="flex-column">
 						<p><a href={article.url}><strong>{article.title}</strong></a></p>
+						<br/>
 						<p>{article.description}</p>
-						<div className="space-between">
-							<p>{renderAuthor(article.author)}</p>
-							<p>{formatDate(article.publishedAt)}</p>
-						</div>
 					</div>
+					<p id="publication-paragraph">Published on {formatDate(article.publishedAt)} by {article.author}</p>	
 				</div>
-				<div className="col s4">
-					<div className="card-image">
-						<img className="article-img" src={article.urlToImage}/>
-					</div>
+				<div className="col s4 card-image">
+					<img className="article-img" src={article.urlToImage} id="article-img"/>
 				</div>
 			</div>
 		</div>	
 	)
-
-	function renderAuthor(author) {
-		if (author) {
-			return author
-		}
-
-		return
-	}
 
 	function formatDate(date) {
 
@@ -45,7 +33,7 @@ const NewsListItem = (props) => {
 		const monthName = monthNames[d.getMonth()]	
 		const day  		= d.getDate()
 
-		return "Published on " + monthName + " " + day + ", " + year
+		return monthName + " " + day + ", " + year
 	}
 }
 

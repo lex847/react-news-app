@@ -45,7 +45,7 @@ class NewsList extends Component {
       			<PublishersList getSelectedPublisherCallback={this.getSelectedPublisherCallback.bind(this)}/>
         		<h4>News List</h4>
         		<hr/>
-        		<div className="row col s12">
+        		<div className="row">
         			{this.renderNews()}
         		</div>
       		</div>
